@@ -1,16 +1,106 @@
-# React + Vite
+# TimelessTreasures - Vintage Marketplace Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TimelessTreasures is a frontend-only React application for a vintage products platform where users can buy, sell, exchange, and request repairs for collectibles such as cars, watches, clocks, rugs, cameras, and showpieces.
 
-Currently, two official plugins are available:
+This project currently includes UI and routing flows. Backend, real authentication, payments API, and database integrations will be added later.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Core Features
 
-## React Compiler
+- Auth-first flow (`Login` / `Signup`) before entering app pages
+- Marketplace listing page with product cards, photos, and detailed specs
+- Dedicated pages for:
+  - Repair
+  - Exchange
+  - Resell
+  - Product comparison
+- Drag-and-drop image upload UI in resale listing form
+- Search, filter, and sort for product browsing
+- Product details page with category, era, origin, material, dimensions, condition, and highlights
+- Contact Us form in app footer
+- Vintage-themed responsive UI design
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React
+- Vite
+- React Router DOM
+- Plain CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+
+```text
+src/
+  components/
+  data/
+  pages/
+  App.jsx
+  main.jsx
+  index.css
+```
+
+## Routes
+
+### Public Routes
+
+- `/login`
+- `/signup`
+
+### Protected App Routes
+
+- `/app/marketplace`
+- `/app/repair`
+- `/app/exchange`
+- `/app/resell`
+- `/app/compare`
+- `/app/product/:productId`
+
+If user is not logged in, protected routes redirect to `/login`.
+
+## How to Run Locally
+
+### 1) Install dependencies
+
+```bash
+npm install
+```
+
+### 2) Start development server
+
+```bash
+npm run dev
+```
+
+Then open the local URL shown in terminal (usually `http://localhost:5173`).
+
+### 3) Build for production
+
+```bash
+npm run build
+```
+
+### 4) Preview production build
+
+```bash
+npm run preview
+```
+
+## Available Scripts
+
+- `npm run dev` - run development server
+- `npm run build` - create production build
+- `npm run preview` - preview production build locally
+- `npm run lint` - run ESLint checks
+
+## Current Frontend-Only Notes
+
+- Login/signup uses simple frontend state with `localStorage` key: `vintage_auth`
+- Razorpay section is a UI placeholder
+- Uploaded photos (drag-drop) are currently selected in UI only (not persisted to backend yet)
+
+## Planned Next Steps
+
+- Node/Express backend APIs
+- MongoDB Atlas integration
+- Real auth (JWT/session)
+- Real Razorpay order + signature verification flow
+- Product CRUD with persistent image upload storage
