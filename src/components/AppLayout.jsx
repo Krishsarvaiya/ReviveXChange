@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 const links = [
   { to: "/app/marketplace", label: "Marketplace" },
@@ -9,6 +9,8 @@ const links = [
 ];
 
 function AppLayout({ onLogout }) {
+  const navigate = useNavigate();
+
   return (
     <div className="app-shell">
       <header className="market-header">
@@ -34,7 +36,7 @@ function AppLayout({ onLogout }) {
             <button type="button" className="ghost-action">
               Explore
             </button>
-            <button type="button" className="ghost-action">
+            <button type="button" className="ghost-action" onClick={() => navigate("/app/resell")}>
               Sell
             </button>
             <button type="button" className="ghost-action">
