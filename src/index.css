@@ -461,6 +461,26 @@ textarea {
   gap: 10px;
 }
 
+.auth-error {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fde8e4;
+  border: 1px solid #e0a096;
+  color: #6b2f28;
+  font-size: 0.9rem;
+}
+
+.form-success {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #e8f0e4;
+  border: 1px solid #a8c49a;
+  color: #2f4a28;
+  font-size: 0.9rem;
+}
+
 .contact-footer h3 {
   margin: 0 0 4px;
 }

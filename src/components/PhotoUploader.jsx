@@ -1,12 +1,13 @@
 import { useRef, useState } from "react";
 
-function PhotoUploader() {
+function PhotoUploader({ onFilesChange }) {
   const [files, setFiles] = useState([]);
   const inputRef = useRef(null);
 
   const addFiles = (list) => {
     const selected = Array.from(list || []).slice(0, 6);
     setFiles(selected);
+    onFilesChange?.(selected);
   };
 
   const handleDrop = (event) => {
