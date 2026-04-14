@@ -5,8 +5,10 @@ import ExchangePage from "./pages/ExchangePage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ComparePage from "./pages/ComparePage";
+import CheckoutPage from "./pages/CheckoutPage";
 import RepairPage from "./pages/RepairPage";
 import ResellPage from "./pages/ResellPage";
+import SellPage from "./pages/SellPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import SignupPage from "./pages/SignupPage";
 import { clearSession, getMe, getStoredToken, persistSession } from "./lib/api";
@@ -95,9 +97,11 @@ function App() {
             <Route path="marketplace" element={<HomePage />} />
             <Route path="repair" element={<RepairPage />} />
             <Route path="exchange" element={<ExchangePage />} />
+            <Route path="sell" element={<SellPage />} />
             <Route path="resell" element={<ResellPage />} />
             <Route path="compare" element={<ComparePage />} />
             <Route path="product/:productId" element={<ProductDetailsPage />} />
+            <Route path="checkout/:productId" element={<CheckoutPage />} />
           </Route>
         </Route>
 

@@ -100,6 +100,22 @@ export function createResellListing(body) {
   return request("/api/resell", { method: "POST", body });
 }
 
+export function createSellListing(body) {
+  return request("/api/sell", { method: "POST", body });
+}
+
 export function createRepairRequest(body) {
   return request("/api/repair", { method: "POST", body });
+}
+
+export function createContactMessage(body) {
+  return request("/api/contact-us", { method: "POST", body });
+}
+
+export function createOrder(body) {
+  return request("/api/orders", { method: "POST", body });
+}
+
+export function getMySubmissions() {
+  return request("/api/me/submissions");
 }

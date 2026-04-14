@@ -1,17 +1,39 @@
 import { useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import FilterBar from "../components/FilterBar";
 import ProductCard from "../components/ProductCard";
 import { categories, products } from "../data/products";
 
 function HomePage() {
-  const [search, setSearch] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get("search") || "";
   const [category, setCategory] = useState("all");
   const [condition, setCondition] = useState("all");
   const [sortBy, setSortBy] = useState("default");
 
+  const handleSearch = (value) => {
+    const next = new URLSearchParams(searchParams);
+    const trimmed = value.trim();
+    if (trimmed) next.set("search", value);
+    else next.delete("search");
+    setSearchParams(next, { replace: true });
+  };
+
   const visibleProducts = useMemo(() => {
     const filtered = products.filter((product) => {
-      const matchSearch = product.title.toLowerCase().includes(search.trim().toLowerCase());
+      const q = search.trim().toLowerCase();
+      const haystack = [
+        product.title,
+        product.category,
+        product.description,
+        product.era,
+        product.origin,
+        product.material,
+        product.condition,
+      ]
+        .join(" ")
+        .toLowerCase();
+      const matchSearch = !q || haystack.includes(q);
       const matchCategory = category === "all" || product.category === category;
       const matchCondition = condition === "all" || product.condition === condition;
       return matchSearch && matchCategory && matchCondition;
@@ -46,7 +68,7 @@ function HomePage() {
 
       <FilterBar
         search={search}
-        onSearch={setSearch}
+        onSearch={handleSearch}
         category={category}
         onCategory={setCategory}
         condition={condition}

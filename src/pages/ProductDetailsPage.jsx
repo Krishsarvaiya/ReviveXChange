@@ -47,7 +47,7 @@ function ProductDetailsPage() {
             <li key={item}>{item}</li>
           ))}
         </ul>
-        <Link to="/app/resell" className="btn-primary inline-block">
+        <Link to={`/app/checkout/${product.id}`} className="btn-primary inline-block">
           Buy Now
         </Link>
       </article>
